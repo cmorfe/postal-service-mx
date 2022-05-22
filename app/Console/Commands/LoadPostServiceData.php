@@ -11,22 +11,22 @@ class LoadPostServiceData extends Command
      *
      * @var string
      */
-    protected $signature = 'command:name';
+    protected $signature = 'post-service-data:load';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Command description';
+    protected $description = 'Load post service data from file';
 
     /**
      * Execute the console command.
      *
-     * @return int
+     * @return void
      */
-    public function handle()
+    public function handle(): void
     {
-        return 0;
+      $this->info('hola');
     }
 }
