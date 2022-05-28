@@ -73,7 +73,7 @@ class LoadPostServiceData extends Command
    *
    * @return array[]
    */
-  function buildDataArray(array $zip_code): array
+  private function buildDataArray(array $zip_code): array
   {
     return [
       $zip_code[0] => [
