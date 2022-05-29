@@ -47,13 +47,11 @@ class LoadPostServiceData extends Command
           function (LazyCollection $zip_codes, $key) {
             $value = $zip_codes->first();
 
-            if ($zip_codes->count() > 1) {
-              $value['settlements'] = $zip_codes->map(
-                function (array $zip_code) {
-                  return $zip_code['settlements'];
-                }
-              );
-            }
+            $value['settlements'] = $zip_codes->map(
+              function (array $zip_code) {
+                return $zip_code['settlements'];
+              }
+            );
 
             return [$key => $value];
           }
