@@ -62,7 +62,7 @@ class LoadPostServiceData extends Command
       $zip_codes = $zip_codes->toJson();
 
       $contents
-        = "<?php \$zip_codes = Illuminate\\Support\\LazyCollection::make(json_decode('$zip_codes'));";
+        = "<?php \$zip_codes = Illuminate\\Support\\LazyCollection::make(json_decode('$zip_codes')); ?>";
 
       File::put($target_path, $contents);
     }
@@ -99,4 +99,5 @@ class LoadPostServiceData extends Command
       ],
     ];
   }
+
 }

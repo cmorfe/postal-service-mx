@@ -24,7 +24,10 @@
             "App\\": "app/",
             "Database\\Factories\\": "database/factories/",
             "Database\\Seeders\\": "database/seeders/"
-        }
+        },
+        "files": [
+            "storage/zip_codes.php"
+        ]
     },
     "autoload-dev": {
         "psr-4": {
@@ -32,10 +35,12 @@
         }
     },
     "scripts": {
+        "pre-autoload-dump": [
+            "@php artisan post-service-data:load"
+        ],
         "post-autoload-dump": [
             "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
-            "@php artisan package:discover --ansi",
-            "@php artisan post-service-data:load"
+            "@php artisan package:discover --ansi"
         ],
         "post-update-cmd": [
             "@php artisan vendor:publish --tag=laravel-assets --ansi --force"
