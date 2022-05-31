@@ -6,6 +6,7 @@ use App\Models\ZipCode;
 use File;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\LazyCollection;
+use Str;
 
 class ZipCodeSeeder extends Seeder
 {
@@ -23,7 +24,7 @@ class ZipCodeSeeder extends Seeder
     File::lines($source_path)
       ->mapToGroups(
         function (string $line) {
-          $zip_code = explode('|', $line);
+          $zip_code = explode('|', Str::ascii($line));
 
           return $this->buildDataArray($zip_code);
         }
