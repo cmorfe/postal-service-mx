@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\ZipCodeResource;
+use App\Models\ZipCode;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Response;
@@ -18,11 +20,13 @@ class ZipCodeController extends Controller
    */
   public function __invoke(Request $request): JsonResponse
   {
-    global $zip_codes;
-
-    include storage_path('zip_codes.php');
-
-    return Response::json($zip_codes->first(), 200, [], JSON_PRETTY_PRINT);
+    return Response::json(
+      new ZipCodeResource(
+        ZipCode::findOrFail(
+          $request->route('zip_code')
+        )
+      )
+    );
   }
 
 }
